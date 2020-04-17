@@ -12,10 +12,12 @@ function Cards(props) {
     let { confirmed, recovered, deaths, lastUpdate } = props.data;
 
     return (
-        <div>
+        <div className={styles.container}>
             <Grid container spacing={3} justify="center">
                 <Grid
                     item
+                    xs={12}
+                    md={3}
                     component={Card}
                     className={cx(styles.card, styles.infected)}
                 >
@@ -32,13 +34,15 @@ function Cards(props) {
                 </Grid>
                 <Grid
                     item
+                    xs={12}
+                    md={3}
                     component={Card}
                     className={cx(styles.card, styles.recovered)}
                 >
                     <CardContent color="primary">
                         <Typography>Recovered</Typography>
                         <Typography variant="h5">
-                            <CountUp end={recovered.value} separator={", "} />
+                            <CountUp end={recovered.value} separator={","} />
                         </Typography>
                         <Typography>Last updated:</Typography>
                         <Typography>
@@ -48,6 +52,8 @@ function Cards(props) {
                 </Grid>
                 <Grid
                     item
+                    xs={12}
+                    md={3}
                     component={Card}
                     className={cx(styles.card, styles.deaths)}
                 >

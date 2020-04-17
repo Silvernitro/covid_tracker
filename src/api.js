@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = " https://covid19.mathdro.id/api";
 
-async function getData() {
+export async function getData() {
     try {
         // destructure the data key from response, then destructure the four
         // fields within data
@@ -17,4 +17,20 @@ async function getData() {
     }
 }
 
-export default getData;
+export async function getDailyData() {
+    try {
+        // returns an array of daily data objects
+        const { data } = await axios.get(`${url}/daily`);
+
+        // only take what we need from each daily data object
+        const modifiedData = data.map(daily => ({
+            confirmed: daily.totalConfirmed,
+            deaths: daily.deaths.total,
+            date: daily.reportDate
+        }));
+
+        return modifiedData;
+    } catch (e) {
+        console.log(e);
+    }
+}
