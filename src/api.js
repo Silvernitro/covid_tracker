@@ -34,3 +34,30 @@ export async function getDailyData() {
         console.log(e);
     }
 }
+
+export async function getCountryData(country) {
+    try {
+        const { data } = await axios.get(`${url}/countries/${country}`);
+
+        return {
+            confirmed: data.confirmed.value,
+            recovered: data.recovered.value,
+            deaths: data.deaths.value
+        };
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export async function getCountries() {
+    try {
+        const {
+            data: { countries: countriesList }
+        } = await axios.get(`${url}/countries`);
+        const output = countriesList.map(x => x.name);
+
+        return output;
+    } catch (e) {
+        console.log(e);
+    }
+}
