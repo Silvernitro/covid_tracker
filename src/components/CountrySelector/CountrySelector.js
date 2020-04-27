@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { changeCountry } from "../../redux/actions";
 import { Select, MenuItem } from "@material-ui/core";
-import { getCountries } from "../api";
+import { getCountries } from "../../api";
 import cx from "classnames";
 import styles from "./CountrySelector.module.css";
 
@@ -19,7 +21,8 @@ function CountrySelector(props) {
 
         function handleChange(e) {
             setCurrentCountry(e.target.value);
-            props.handleChange(e);
+            props.changeCountry(e.target.value);
+            // props.handleChange(e);
         }
 
         return (
@@ -37,4 +40,4 @@ function CountrySelector(props) {
     }
 }
 
-export default CountrySelector;
+export default connect(null, { changeCountry })(CountrySelector);

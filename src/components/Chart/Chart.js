@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import styles from "./Chart.module.css";
-import { getDailyData, getCountryData } from "../api";
+import { getDailyData, getCountryData } from "../../api";
 import { Line, Bar } from "react-chartjs-2";
+
+const mapState = state => {
+    console.log(state);
+    return { country: state };
+};
 
 function Chart(props) {
     const [dailyData, setDailyData] = useState({});
@@ -89,4 +95,4 @@ function Chart(props) {
     }
 }
 
-export default Chart;
+export default connect(mapState)(Chart);
