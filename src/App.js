@@ -18,11 +18,11 @@ class App extends React.Component {
         this.setState({ data: fetchedData });
     }
 
-    //     handleChange(e) {
-    //         var newValue = e.target.value;
-    //         console.log(newValue.toLowerCase());
-    //         this.setState({ country: newValue.toLowerCase() });
-    //     }
+        // handleChange(e) {
+        //     var newValue = e.target.value;
+        //     console.log(newValue.toLowerCase());
+        //     this.setState({ country: newValue.toLowerCase() });
+        // }
 
     render() {
         return (
