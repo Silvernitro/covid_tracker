@@ -7,37 +7,36 @@ import cx from "classnames";
 import styles from "./CountrySelector.module.css";
 
 function CountrySelector(props) {
-    const [countries, setCountries] = useState([]);
-    const [currentCountry, setCurrentCountry] = useState("global");
+  const [countries, setCountries] = useState([]);
 
-    useEffect(() => {
-        (async () => setCountries(await getCountries()))();
-    }, []);
+  useEffect(() => {
+    (async () => setCountries(await getCountries()))();
+  }, []);
 
-    {
-        let countryItems = countries.map(x => (
-            <MenuItem value={x}>{x}</MenuItem>
-        ));
+  {
+    let countryItems = countries.map((x) => <MenuItem value={x}>{x}</MenuItem>);
 
-        function handleChange(e) {
-            setCurrentCountry(e.target.value);
-            props.changeCountry(e.target.value);
-            // props.handleChange(e);
-        }
-
-        return (
-            <div className={styles.container}>
-                <Select
-                    value={currentCountry}
-                    onChange={handleChange}
-                    className={cx(styles.select, styles.selector)}
-                >
-                    <MenuItem value="global">Global</MenuItem>
-                    {countryItems}
-                </Select>
-            </div>
-        );
+    function handleChange(e) {
+      props.changeCountry(e.target.value);
     }
+
+    return (
+      <div className={styles.container}>
+        <Select
+          value={props.country}
+          onChange={handleChange}
+          className={cx(styles.select, styles.selector)}
+        >
+          <MenuItem value="global">Global</MenuItem>
+          {countryItems}
+        </Select>
+      </div>
+    );
+  }
 }
 
-export default connect(null, { changeCountry })(CountrySelector);
+const mapState = (state) => ({
+  country: state,
+});
+
+export default connect(mapState, { changeCountry })(CountrySelector);
