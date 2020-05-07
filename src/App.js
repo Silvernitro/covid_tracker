@@ -1,46 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { getData } from "./api";
+import { connect } from "react-redux";
+import { fetchData } from "./redux/actions";
 import styles from "./App.module.css";
+import NavBar from "./components/NavBar/NavBar";
 import Cards from "./components/Cards/Cards";
 import Chart from "./components/Chart/Chart";
 import CountrySelector from "./components/CountrySelector/CountrySelector";
 
-// class App extends React.Component {
-//   constructor(props) {
-//     super();
-//     this.state = { data: {} };
-//   }
-
-//   async componentDidMount() {
-//     let fetchedData = await getData();
-//     this.setState({ data: fetchedData });
-//   }
-
-//   render() {
-//     return (
-//       <div className={styles.container}>
-//         <Cards data={this.state.data} />
-//         <CountrySelector />
-//         <Chart />
-//       </div>
-//     );
-//   }
-// }
-
 function App(props) {
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
+  const fetchData = props.fetchData;
 
   useEffect(() => {
-    (async () => setData(await getData()))();
-  });
+    // (async () => setData(await getData()))();
+    fetchData();
+  }, [fetchData]);
 
   return (
     <div className={styles.container}>
-      <Cards data={data} />
+      <NavBar />
+      <Cards />
       <CountrySelector />
       <Chart />
     </div>
   );
 }
 
-export default App;
+export default connect(null, { fetchData })(App);
+
+// export default App;

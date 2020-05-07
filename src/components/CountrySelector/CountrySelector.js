@@ -35,8 +35,6 @@ function CountrySelector(props) {
   }
 }
 
-const mapState = (state) => ({
-  country: state,
-});
+const mapState = ({ country }) => ({ country });
 
 export default connect(mapState, { changeCountry })(CountrySelector);

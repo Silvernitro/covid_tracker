@@ -1,0 +1,28 @@
+.navBar {
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.navBar ul {
+  height: 100%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 0px;
+}
+
+.item {
+  font-family: Roboto;
+  font-size: 1.25rem;
+  margin: 0 0 0 20px;
+  transition: color 0.4s;
+  /* background-color: grey; */
+}
+
+.item:hover {
+  color: rgba(179, 28, 23, 1);
+}
