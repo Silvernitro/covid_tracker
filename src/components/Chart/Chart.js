@@ -5,7 +5,6 @@ import { getDailyData, getCountryData } from "../../api";
 import { Line, Bar } from "react-chartjs-2";
 
 const mapState = ({ country }) => {
-  console.log(country);
   return { country };
 };
 
@@ -87,10 +86,8 @@ function Chart(props) {
   );
 
   if (props.country === "global") {
-    console.log(dailyData);
     return <div className={styles.container}>{lineChart}</div>;
   } else {
-    console.log(countryData);
     return <div className={styles.container}>{barChart}</div>;
   }
 }

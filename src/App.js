@@ -1,27 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchData } from "./redux/actions";
+import { Route, Switch } from "react-router-dom";
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar/NavBar";
 import Cards from "./components/Cards/Cards";
 import Chart from "./components/Chart/Chart";
 import CountrySelector from "./components/CountrySelector/CountrySelector";
+import ComparisonTool from "./components/ComparisonTool/ComparisonTool";
 
 function App(props) {
   // const [data, setData] = useState({});
   const fetchData = props.fetchData;
 
   useEffect(() => {
-    // (async () => setData(await getData()))();
     fetchData();
   }, [fetchData]);
 
   return (
     <div className={styles.container}>
       <NavBar />
-      <Cards />
-      <CountrySelector />
-      <Chart />
+      <Switch>
+        <Route path="/compare">
+          <ComparisonTool />
+        </Route>
+
+        <Route path="/">
+          <Cards />
+          <CountrySelector />
+          <Chart />
+        </Route>
+      </Switch>
     </div>
   );
 }

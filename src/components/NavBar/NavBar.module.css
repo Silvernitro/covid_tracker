@@ -18,11 +18,19 @@
 .item {
   font-family: Roboto;
   font-size: 1.25rem;
+  text-decoration: none;
   margin: 0 0 0 20px;
   transition: color 0.3s;
-  /* background-color: grey; */
+}
+
+.item:visited {
+  color: black;
 }
 
 .item:hover {
   color: rgba(179, 28, 23, 1);
+}
+
+.activeItem {
+  color: rgba(179, 28, 23, 1) !important;
 }
