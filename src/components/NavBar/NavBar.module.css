@@ -28,7 +28,7 @@
 }
 
 .item:hover {
-  color: rgba(179, 28, 23, 1);
+  color: rgba(179, 28, 23, 0.7);
 }
 
 .activeItem {

@@ -8,6 +8,7 @@ import Cards from "./components/Cards/Cards";
 import Chart from "./components/Chart/Chart";
 import CountrySelector from "./components/CountrySelector/CountrySelector";
 import ComparisonTool from "./components/ComparisonTool/ComparisonTool";
+import About from "./components/About/AboutPage";
 
 function App(props) {
   // const [data, setData] = useState({});
@@ -23,6 +24,10 @@ function App(props) {
       <Switch>
         <Route path="/compare">
           <ComparisonTool />
+        </Route>
+
+        <Route path="/about">
+          <About />
         </Route>
 
         <Route path="/">

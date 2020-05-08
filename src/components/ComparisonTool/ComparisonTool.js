@@ -20,11 +20,11 @@ function ComparisonTool(props) {
     if (event.keyCode === 13) {
       event.preventDefault();
       let input = event.target.value;
+      setInput("");
       if (!countries.includes(input)) {
-        console.log("invalid country");
+        event.target.placeholder = "Invalid country";
       } else {
         setSelected([...selected, event.target.value]);
-        setInput("");
       }
     }
   };
@@ -42,6 +42,7 @@ function ComparisonTool(props) {
             type="text"
             value={input}
             placeholder="search for country"
+            onFocus={(e) => (e.target.placeholder = "")}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             className="searchBar"

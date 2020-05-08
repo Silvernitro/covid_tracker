@@ -25,7 +25,15 @@ export default function NavBar(props) {
             Comparison Tool
           </NavLink>
         </li>
-        <li className={styles.item}>About</li>
+        <li>
+          <NavLink
+            to="/about"
+            className={styles.item}
+            activeClassName={styles.activeItem}
+          >
+            About
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
