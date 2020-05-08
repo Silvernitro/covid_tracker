@@ -16,11 +16,10 @@ const receiveData = (data) => ({
 });
 
 const fetchData = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(requestingData());
-    return getData().then((data) => {
-      dispatch(receiveData(data));
-    });
+    const data = await getData();
+    dispatch(receiveData(data));
   };
 };
 
