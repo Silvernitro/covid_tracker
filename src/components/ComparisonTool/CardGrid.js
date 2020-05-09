@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import CountryCard from "./CountryCard";
 import "./ComparisonTool.css";
 
@@ -15,5 +16,9 @@ function CardGrid(props) {
 
   return <div className="grid">{cards}</div>;
 }
+
+CardGrid.propTypes = {
+  country: PropTypes.arrayOf(PropTypes.string),
+};
 
 export default CardGrid;

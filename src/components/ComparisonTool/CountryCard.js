@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { getCountryData } from "../../api";
 import "./ComparisonTool.css";
 
@@ -24,5 +25,10 @@ function CountryCard(props) {
     </div>
   );
 }
+
+CountryCard.propTypes = {
+  country: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+};
 
 export default CountryCard;
